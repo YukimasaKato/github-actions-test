@@ -1,0 +1,20 @@
+name: called
+
+on:
+  workflow_call:
+    outputs:
+      a:
+        value: ${{ jobs.job1.outputs.a }}
+
+jobs:
+  job1:
+    name: hoge
+    runs-on: ubuntu-latest
+    outputs:
+      a: ${{ steps.test.outputs.a }}
+    steps:
+      - uses: actions/checkout@v3
+
+      - id: test
+        run: |
+          echo "a=hoge" >> $GITHUB_OUTPUT

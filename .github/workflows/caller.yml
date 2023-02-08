@@ -1,0 +1,20 @@
+name: Test GitHub Actions
+
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  called:
+    uses: ./.github/workflows/called.yml
+
+  test:
+    needs: called
+    name: test
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - run: |
+          echo ${{ needs.called.outputs.a }}

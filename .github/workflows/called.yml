@@ -20,5 +20,7 @@ jobs:
 
       - id: test
         run: |
-          echo "test-a=hoge/test:abc" >> $GITHUB_OUTPUT
-          echo "test-b=fuga/test:abc" >> $GITHUB_OUTPUT
+          a=${{ secrets.TEST }}-a
+          b=${{ secrets.TEST }}-b
+          echo "test-a=$a.example.com@hoge/test:abc" >> $GITHUB_OUTPUT
+          echo "test-b=$b.example.com@fuga/test:abc" >> $GITHUB_OUTPUT

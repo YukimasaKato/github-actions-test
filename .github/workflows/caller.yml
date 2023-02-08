@@ -10,7 +10,7 @@ env:
 jobs:
   called:
     uses: ./.github/workflows/called.yml
-    with:
+    secrets:
       TEST: ${{ env.TEST }}
 
   test:

@@ -4,11 +4,14 @@ on:
   push:
     branches: ["main"]
 
+env:
+  TEST: ${{ secrets.TEST }}
+
 jobs:
   called:
     uses: ./.github/workflows/called.yml
     with:
-      TEST: ${{ secrets.TEST }}
+      TEST: ${{ env.TEST }}
 
   test:
     needs: called

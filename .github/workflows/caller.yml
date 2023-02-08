@@ -11,7 +11,7 @@ jobs:
   called:
     uses: ./.github/workflows/called.yml
     with:
-      TEST: hoge
+      test: ${{ secrets.TEST }}
 
   test:
     needs: called

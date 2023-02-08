@@ -17,4 +17,4 @@ jobs:
       - uses: actions/checkout@v3
 
       - run: |
-          echo ${{ needs.called.outputs.a }}
+          echo ${{ needs.called.outputs.test-a }}

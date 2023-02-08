@@ -2,6 +2,10 @@ name: called
 
 on:
   workflow_call:
+    inputs:
+      TEST:
+        required: true
+        type: string
     outputs:
       test-a:
         value: ${{ jobs.job1.outputs.test-a }}
@@ -20,7 +24,7 @@ jobs:
 
       - id: test
         run: |
-          a=${{ secrets.TEST }}-a
-          b=${{ secrets.TEST }}-b
+          a=${{ inputs.TEST }}-a
+          b=${{ inputs.TEST }}-b
           echo "test-a=$a.example.com@hoge/test:abc" >> $GITHUB_OUTPUT
           echo "test-b=$b.example.com@fuga/test:abc" >> $GITHUB_OUTPUT

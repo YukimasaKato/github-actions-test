@@ -5,6 +5,8 @@ on:
     outputs:
       test-a:
         value: ${{ jobs.job1.outputs.test-a }}
+      test-b:
+        value: ${{ jobs.job1.outputs.test-b }}
 
 jobs:
   job1:
@@ -12,9 +14,11 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       test-a: ${{ steps.test.outputs.test-a }}
+      test-b: ${{ steps.test.outputs.test-b }}
     steps:
       - uses: actions/checkout@v3
 
       - id: test
         run: |
           echo "test-a=hoge" >> $GITHUB_OUTPUT
+          echo "test-b=fuga" >> $GITHUB_OUTPUT

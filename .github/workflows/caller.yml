@@ -18,3 +18,4 @@ jobs:
 
       - run: |
           echo ${{ needs.called.outputs.test-a }}
+          echo ${{ needs.called.outputs.test-b }}

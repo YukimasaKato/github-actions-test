@@ -20,5 +20,5 @@ jobs:
 
       - id: test
         run: |
-          echo "test-a=hoge" >> $GITHUB_OUTPUT
-          echo "test-b=fuga" >> $GITHUB_OUTPUT
+          echo "test-a=hoge/test:abc" >> $GITHUB_OUTPUT
+          echo "test-b=fuga/test:abc" >> $GITHUB_OUTPUT

@@ -15,9 +15,10 @@ jobs:
       - uses: actions/checkout@v3
 
       - id: test
+        env:
+          a: ${{ secrets.TEST }}
+          b: ${{ secrets.TEST }}
         run: |
-          a=${{ inputs.test }}-a
-          b=${{ inputs.test }}-b
           echo "test-a=$a.example.com@hoge/test:abc" >> $GITHUB_OUTPUT
           echo "test-b=$b.example.com@fuga/test:abc" >> $GITHUB_OUTPUT
 

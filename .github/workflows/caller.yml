@@ -5,31 +5,29 @@ on:
     branches: ["main"]
 
 jobs:
-  called:
-    name: hoge
+  job1:
     runs-on: ubuntu-latest
-    outputs:
-      test-a: ${{ steps.test.outputs.test-a }}
-      test-b: ${{ steps.test.outputs.test-b }}
     steps:
-      - uses: actions/checkout@v3
-
-      - id: test
-        env:
-          a: ${{ secrets.TEST }}
-          b: ${{ secrets.TEST }}
-        run: |
-          echo "test-a=${a}.example.com@hoge/test:abc" >> $GITHUB_OUTPUT
-          echo "test-b=${b}.example.com@fuga/test:abc" >> $GITHUB_OUTPUT
-
-  test:
-    needs: called
-    name: test
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v3
-
       - run: |
-          echo ${{ needs.called.outputs.test-a }}
-          echo ${{ needs.called.outputs.test-b }}
+          mkdir ./dist-task-def
+          echo hoge > ./dist-task-def/a-task-def.json
+          echo fuga > ./dist-task-def/b-task-def.json
+
+      - name: Archive artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: dist-task-def
+          path: |
+            dist-task-def
+
+  job2:
+    needs: job1
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download a single artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: dist-task-def
+      - run: |
+          ls

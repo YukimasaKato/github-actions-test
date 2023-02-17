@@ -30,4 +30,5 @@ jobs:
         with:
           name: dist-task-def
       - run: |
-          ls
+          pwd
+          ls -la

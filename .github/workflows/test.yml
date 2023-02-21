@@ -15,7 +15,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          echo "job2"
+          echo "job2 failure"
+          exit 1
   
   job3:
     runs-on: ubuntu-latest

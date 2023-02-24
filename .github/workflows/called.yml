@@ -1,0 +1,17 @@
+name: called
+
+on:
+  workflow_call:
+    inputs:
+      test:
+        type: string
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - uses: actions/checkout@v3
+      - run: |
+          ls ${{ inputs.test }}

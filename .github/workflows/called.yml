@@ -14,4 +14,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: |
-          ls ${{ inputs.test }}
+          id: set-env
+          echo "test=${{ secrets.TEST }}" >> $GITHUB_ENV
+      - run: |
+          ls ${{ env.test }}

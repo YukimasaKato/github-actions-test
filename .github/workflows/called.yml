@@ -2,9 +2,9 @@ name: called
 
 on:
   workflow_call:
-    inputs:
+    secrets:
       test:
-        type: string
+        required: true
 
 jobs:
   build:
@@ -14,7 +14,4 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: |
-          id: set-env
-          echo "test=${{ secrets.TEST }}" >> $GITHUB_ENV
-      - run: |
-          ls ${{ env.test }}
+          ls ${{ secrets.test }}

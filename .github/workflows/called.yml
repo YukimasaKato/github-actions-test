@@ -2,9 +2,6 @@ name: called
 
 on:
   workflow_call:
-    secrets:
-      test:
-        required: true
 
 jobs:
   test:

@@ -5,13 +5,21 @@ on:
     branches: ["main"]
 
 jobs:
-  test:
-    uses: ./.github/workflows/called.yml
-  job2:
+#  test:
+#    uses: ./.github/workflows/called.yml
+#  job2:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/checkout@v3
+#      - run: echo TEST=abc >> $GITHUB_ENV
+#      - uses: ./.github/actions/test-action
+#        with:
+#          test: $TEST
+  job3:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - run: echo TEST=abc >> $GITHUB_ENV
-      - uses: ./.github/actions/test-action
-        with:
-          test: $TEST
+      - run: |
+          echo TEST=b >> $GITHUB_ENV
+      - run: |
+          cd src
+          cat a.$TEST.txt

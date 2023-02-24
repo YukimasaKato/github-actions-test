@@ -1,0 +1,12 @@
+name: Build App
+description: Build application.
+inputs:
+  test:
+    description: test
+    required: true
+runs:
+  using: composite
+  steps:
+    - uses: actions/checkout@v3
+    - run: echo ${{ inputs.test }}
+      shell: bash

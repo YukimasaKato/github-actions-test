@@ -9,12 +9,12 @@ jobs:
     timeout-minutes: 30
 
     steps:
-      - name: set main env
+      - name: Set main env
         if: github.ref_name == 'main'
         run: |
           echo "test=MAIN" >> $GITHUB_ENV
       
-      - name: set develop env
+      - name: Set develop env
         if: github.ref_name == 'develop'
         run: |
           echo "test=DEVELOP" >> $GITHUB_ENV

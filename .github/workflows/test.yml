@@ -5,8 +5,14 @@ on:
     branches: ["main"]
 
 jobs:
-  test:
+  job1:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          echo ${{ github.ref_name }}
+          echo "a=hoge" >> $GITHUB_ENV
+  job2:
+    runs-on: ubuntu-latest
+    needs: job1
+    steps:
+      - run: |
+          echo ${{ env.a }}

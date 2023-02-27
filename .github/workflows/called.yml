@@ -32,10 +32,10 @@ jobs:
           echo PASS=hogefuga >> $GITHUB_ENV
       - name: debug
         run: |
-          echo $ENVIRONMENT
-          echo $PASS
+          echo ${{ env.ENVIRONMENT }}
+          echo ${{ env.PASS }}
       - name: Decrypt
         uses: ./.github/actions/decrypt
         with:
-          decrypt-pass: hogehoge
-          environment: fugafuga
+          decrypt-pass: ${{ env.PASS }}
+          environment: ${{ env.ENVIRONMENT }}

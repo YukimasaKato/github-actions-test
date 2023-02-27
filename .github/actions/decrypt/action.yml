@@ -23,5 +23,8 @@ runs:
         ENCRYPTED: a.${{ inputs.environment }}.encrypted
         PASS: ${{ inputs.decrypt-pass }}
       run: |
+        echo $ENVIRONMENT
+        echo $ENCRYPTED
+        echo $PASS
         cd src
         openssl aes-256-cbc -d -in ${ENCRYPTED} -out .env.${ENVIRONMENT} -pass pass:${PASS}

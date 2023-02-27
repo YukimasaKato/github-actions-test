@@ -14,8 +14,8 @@ runs:
     - name: decrypt
       shell: bash
       env:
-        ENVIRONMENT: ${{ inputs.environment }}
+        ENCRYPTED: a.${{ inputs.environment }}.encrypted
         PASS: ${{ inputs.decrypt-pass }}
       run: |
         cd src
-        openssl aes-256-cbc -d -in a.${ENVIRONMENT}.encrypted -out .env.${ENVIRONMENT} -pass pass:${PASS}
+        openssl aes-256-cbc -d -in ${ENCRYPTED} -out .env.${ENVIRONMENT} -pass pass:${PASS}

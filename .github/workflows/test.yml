@@ -5,8 +5,9 @@ on:
     branches: ["main"]
 
 jobs:
-#  test:
-#    uses: ./.github/workflows/called.yml
+  test:
+    uses: ./.github/workflows/called.yml
+    secrets: inherit
 #  job2:
 #    runs-on: ubuntu-latest
 #    steps:
@@ -15,23 +16,3 @@ jobs:
 #      - uses: ./.github/actions/test-action
 #        with:
 #          test: $TEST
-  job3:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: encrypt
-        run: |
-          cd src
-          openssl aes-256-cbc -e -in a.b.txt -out a.b.encrypted -pass pass:hoge
-      - name: debug
-        run: |
-          cd src
-          ls -la
-      - name: set env
-        run: |
-          echo ENVIRONMENT=b >> $GITHUB_ENV
-          echo PASS=hoge >> $GITHUB_ENV
-      - name: decrypt
-        run: |
-          cd src
-          openssl aes-256-cbc -d -in a.${ENVIRONMENT}.encrypted -out .env.${ENVIRONMENT} -pass pass:${PASS} -md md5

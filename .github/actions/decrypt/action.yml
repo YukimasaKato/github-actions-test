@@ -1,0 +1,21 @@
+name: Decrypt
+description: decrypt
+inputs:
+  environment:
+    description: environment
+    required: true
+  decrypt-pass:
+    description: pass
+    required: true
+runs:
+  using: composite
+  steps:
+    - uses: actions/checkout@v3
+    - name: decrypt
+      shell: bash
+      env:
+        ENVIRONMENT: ${{ inputs.environment }}
+        PASS: ${{ inputs.decrypt-pass }}
+      run: |
+        cd src
+        openssl aes-256-cbc -d -in a.${ENVIRONMENT}.encrypted -out .env.${ENVIRONMENT} -pass pass:${PASS}

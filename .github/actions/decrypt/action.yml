@@ -14,6 +14,7 @@ runs:
     - name: decrypt
       shell: bash
       env:
+        ENVIRONMENT: ${{ inputs.environment }}
         ENCRYPTED: a.${{ inputs.environment }}.encrypted
         PASS: ${{ inputs.decrypt-pass }}
       run: |

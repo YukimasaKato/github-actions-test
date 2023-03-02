@@ -7,6 +7,13 @@ inputs:
 runs:
   using: composite
   steps:
-    - uses: actions/checkout@v3
     - run: echo ${{ inputs.test }}
       shell: bash
+
+    - if: ${{ github.ref_name == 'main' }}
+      shell: bash
+      run: echo "main!"
+
+    - if: ${{ github.ref_name == 'develop' }}
+      shell: bash
+      run: echo "develop!"

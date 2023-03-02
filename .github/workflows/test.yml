@@ -13,3 +13,4 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: ./.github/actions/test-action
+      - run: echo $test

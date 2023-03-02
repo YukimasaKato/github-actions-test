@@ -2,17 +2,13 @@ name: Test GitHub Actions
 
 on:
   push:
-    branches: ["main"]
+    branches: ["main", "develop"]
 
 jobs:
   test:
     uses: ./.github/workflows/called.yml
     secrets: inherit
-#  job2:
-#    runs-on: ubuntu-latest
-#    steps:
-#      - uses: actions/checkout@v3
-#      - run: echo TEST=abc >> $GITHUB_ENV
-#      - uses: ./.github/actions/test-action
-#        with:
-#          test: $TEST
+  job2:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo $GITHUB_SHA

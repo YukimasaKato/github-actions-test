@@ -12,8 +12,8 @@ runs:
 
     - if: ${{ github.ref_name == 'main' }}
       shell: bash
-      run: echo test=main >> $GITHUB_NV
+      run: echo test=main >> $GITHUB_ENV
 
     - if: ${{ github.ref_name == 'develop' }}
       shell: bash
-      run: echo test=develop >> $GITHUB_NV
+      run: echo test=develop >> $GITHUB_ENV

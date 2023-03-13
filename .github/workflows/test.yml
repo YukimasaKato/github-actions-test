@@ -2,15 +2,10 @@ name: Test GitHub Actions
 
 on:
   push:
-    branches: ["main", "develop"]
+    branches: ["main"]
 
 jobs:
   test:
-    uses: ./.github/workflows/called.yml
-    secrets: inherit
-  job2:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: ./.github/actions/test-action
-      - run: echo $test
+      - run: echo hoge
